@@ -331,7 +331,7 @@ function terminarPartida(){
     $.afui.loadContent("#formulario",false,false,"up");
 }
 
-function guargarPuntos(){
+function guardarPuntos(){
     // Cargamos los marcadores de localStorage
     var marcadores = JSON.parse(localStorage.getItem("marcadores"));
     // Si no existe, lo inicializamos.
@@ -349,6 +349,8 @@ function guargarPuntos(){
     marcadores.push(puntuacion);
     
     localStorage.setItem("marcadores",JSON.stringify(marcadores));
+    
+    mostrarPuntos();
 }
 
 function mostrarPuntos(){
@@ -357,7 +359,7 @@ function mostrarPuntos(){
     var marcadores = JSON.parse(localStorage.getItem("marcadores"));
     // Si no existe, no hacemos nada.
     var tabla = $("<table border='1px solid black'/>");
-    tabla.append("<th>nombre</th>","<th>puntos</th>","<th>tiempo</th>");
+    tabla.append("<tr><th>nombre</th><th>puntos</th><th>tiempo</th></tr>");
     if (marcadores !== null) {
         for (var jugador in marcadores) {
             var tr = $("<tr />");
